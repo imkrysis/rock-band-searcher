@@ -26,23 +26,25 @@ function getArtists(){
 
 	  for(i in msg.artists) {
 
-      if (msg.artists[i].disambiguation  == null) {
+      disambiguation = msg.artists[i].disambiguation
 
-        $('#listResult').append('<li><h5>'+msg.artists[i].name+'</h5>'+'<a href="#!" class="secondary-content"></a></li>');
+      if (disambiguation != undefined) {
 
-      } else {
+        if (disambiguation.includes('rock')) {
 
-        $('#listResult').append('<li><h5>'+msg.artists[i].name+'</h5>'+'('+msg.artists[i].disambiguation +')<a href="#!" class="secondary-content"></a></li>');
+          $('#listResult').append('<li><h5>'+msg.artists[i].name+'</h5>'+'('+msg.artists[i].disambiguation +')<a href="#!" class="secondary-content"></a></li>');
 
-      }	   	
+        }
 
-	  };
+      }	
+
+	  }
 
 	}).fail(function () {
 
 		alert("There has been an unexpected problem");
 
-	});
+	})
 
 }
 
